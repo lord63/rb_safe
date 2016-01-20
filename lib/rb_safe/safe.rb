@@ -28,5 +28,23 @@ module RbSafe
   end
 
   class Strength
+    def initialize(valid, strength, message)
+      @valid = valid
+      @strength = strength
+      @message = message
+    end
+
+    def bool
+      @valid
+    end
+
+    def to_str
+      @strength
+    end
+
+    def to_s
+      @message
+    end
+  end
   end
 end
