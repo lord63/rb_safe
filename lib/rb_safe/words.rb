@@ -25,7 +25,7 @@ module RbSafe
       words = {}
       File.open(words_file, 'rb') do |file|
         file.readlines.each do |line|
-          name, freq = line.split()
+          name, freq = line.split
           words[name] = freq.to_i
         end
       end
