@@ -41,7 +41,7 @@ module RbSafe
       @valid
     end
 
-    def to_str
+    def inspect
       @strength
     end
 
