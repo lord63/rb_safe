@@ -3,8 +3,8 @@ require 'rb_safe/words'
 
 module RbSafe
   def self.asdf?(raw)
-    # The current implementation treat those passwords that in the same line
-    # are "is asdf".
+    # The current implementation treats those passwords that in the same line
+    # are "is asdf", e.g. 'qwer' is, 'opas' not.
     keyboard = %w(qwertyuiop, asdfghjkl, zxcvbnm)
     keyboard.any? do |pattern|
       pattern.include?(raw) || pattern.include?(raw.reverse)
@@ -37,6 +37,7 @@ module RbSafe
     end
 
     def bool
+    # TODO: take a look at this method, maybe choose another name.
       @valid
     end
 

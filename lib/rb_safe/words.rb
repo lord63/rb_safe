@@ -13,9 +13,7 @@ module RbSafe
       # Load from cache if it exists.
       if File.exist?(cache_file)
         # TODO: deal with the exception.
-        # File.open(cache_file, 'rb') do |file|
         return Marshal.load(File.open(cache_file, 'rb'))
-        # end
       end
 
       # Convert the data to a hash.
