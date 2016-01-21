@@ -61,10 +61,10 @@ module RbSafe
       return Strength.new(false, 'simple', 'password is too common')
     end
     types = 0
-    types += types if raw =~ /[a-z]/ # Has lower letter.
-    types += types if raw =~ /[A-Z]/ # Has upper letter.
-    types += types if raw =~ /[0-9]/ # Has number.
-    types += types if raw =~ /[^0-9a-zA-Z]/ # Has mark.
+    types += 1 if raw =~ /[a-z]/ # Has lower letter.
+    types += 1 if raw =~ /[A-Z]/ # Has upper letter.
+    types += 1 if raw =~ /[0-9]/ # Has number.
+    types += 1 if raw =~ /[^0-9a-zA-Z]/ # Has mark.
     if types < 2
       return Strength.new(level <= SIMPLE, 'simple', 'password is too simple')
     elsif types < min_types
