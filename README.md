@@ -1,8 +1,7 @@
 # RbSafe
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rb_safe`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Check the password's strength for you. It's a ruby port for the original python
+implementation: [safe](https://github.com/lepture/safe)
 
 ## Installation
 
@@ -22,7 +21,27 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+> RbSafe.check(1)
+=> terrible
+> RbSafe.check('password')
+=> simple
+> RbSafe.check('is.safe.password')
+=> medium
+> RbSafe.check('x*V-92Ba')
+=> strong
+> password = RbSafe.check('x*V-92Ba')
+> p password
+strong
+> puts password
+password is perfect
+> password.valid
+=> true
+> password.strength
+=> "strong"
+> password.message
+=> "password is perfect"
+```
 
 ## Development
 
@@ -32,5 +51,12 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rb_safe.
+Bug reports and pull requests are welcome on GitHub at https://github.com/lord63/rb_safe.
 
+## Kudos
+
+All the glories should belong to @lepture, I just port it to ruby :)
+
+## License
+
+MIT.
