@@ -54,7 +54,7 @@ module RbSafe
     default_config = { length: 8, freq: 0, min_types: 3, level: STRONG }
     config = default_config.update(config)
 
-    level = STRONG if config[:level] > STRONG
+    config[:level] = STRONG if config[:level] > STRONG
     raw = raw.to_s
     if raw.length < config[:length]
       return Strength.new(false, 'terrible', 'password is too short')
