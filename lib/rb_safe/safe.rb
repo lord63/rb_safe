@@ -50,14 +50,17 @@ module RbSafe
     end
   end
 
-  def self.check(raw, length = 8, freq = 0, min_types = 3, level = STRONG)
-    level = STRONG if level > STRONG
+  def self.check(raw, config={})
+    default_config = {length: 8, freq: 0, min_types: 3, level: STRONG}
+    config = default_config.update(config)
+
+    level = STRONG if config[:level] > STRONG
     raw = raw.to_s
-    if raw.length < length
+    if raw.length < config[:length]
       return Strength.new(false, 'terrible', 'password is too short')
     elsif asdf?(raw) || by_step?(raw)
       return Strength.new(false, 'simple', 'password has a pattern')
-    elsif common_password?(raw, freq)
+    elsif common_password?(raw, config[:freq])
       return Strength.new(false, 'simple', 'password is too common')
     end
     types = 0
@@ -66,9 +69,10 @@ module RbSafe
     types += 1 if raw =~ /[0-9]/ # Has number.
     types += 1 if raw =~ /[^0-9a-zA-Z]/ # Has mark.
     if types < 2
-      return Strength.new(level <= SIMPLE, 'simple', 'password is too simple')
-    elsif types < min_types
-      return Strength.new(level <= MEDIUM, 'medium',
+      return Strength.new(config[:level] <= SIMPLE, 'simple',
+                          'password is too simple')
+    elsif types < config[:min_types]
+      return Strength.new(config[:level] <= MEDIUM, 'medium',
                           'password is good enough, but not strong')
     else
       return Strength.new(true, 'strong', 'password is perfect')
