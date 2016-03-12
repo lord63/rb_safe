@@ -5,7 +5,7 @@ class RbSafeTest < Minitest::Test
     cache_name = "rb_safe-#{RbSafe::VERSION}.words.cache"
     cache_file = ENV.fetch('RUBY_SAFE_WORDS_CACHE',
                            "#{Dir.tmpdir}/#{cache_name}")
-    if File.exists?(cache_file)
+    if File.exist?(cache_file)
       File.delete(cache_file)
     end
   end
@@ -34,7 +34,7 @@ class RbSafeTest < Minitest::Test
   end
 
   def test_common_password_with_freq
-    common_password = RbSafe.check('password', {freq: 1})
+    common_password = RbSafe.check('password', freq: 1)
     assert common_password.message.include?('common')
   end
 

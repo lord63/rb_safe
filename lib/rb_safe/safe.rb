@@ -37,7 +37,7 @@ module RbSafe
     end
 
     def bool
-    # TODO: take a look at this method, maybe choose another name.
+      # TODO: take a look at this method, maybe choose another name.
       @valid
     end
 
@@ -50,8 +50,8 @@ module RbSafe
     end
   end
 
-  def self.check(raw, config={})
-    default_config = {length: 8, freq: 0, min_types: 3, level: STRONG}
+  def self.check(raw, config = {})
+    default_config = { length: 8, freq: 0, min_types: 3, level: STRONG }
     config = default_config.update(config)
 
     level = STRONG if config[:level] > STRONG
