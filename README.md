@@ -1,5 +1,9 @@
 # RbSafe
 
+[![Latest Version][1]][2]
+[![Build Status][3]][4]
+[![Coverage Status][5]][6]
+
 Check the password's strength for you. It's a ruby port for the original python
 implementation: [safe][]
 
@@ -76,6 +80,12 @@ All the glories should belong to [@lepture][], I just port it to ruby :)
 
 MIT.
 
+[1]: https://badge.fury.io/rb/rb_safe.svg
+[2]: http://badge.fury.io/rb/rb_safe
+[3]: https://travis-ci.org/lord63/rb_safe.svg?branch=master
+[4]: https://travis-ci.org/lord63/rb_safe
+[5]: https://codecov.io/github/lord63/rb_safe/coverage.svg?branch=master
+[6]: https://codecov.io/github/lord63/rb_safe?branch=master
 [safe]: https://github.com/lepture/safe
 [rubygems.org]: https://rubygems.org
 [lord63/rb_safe]: https://github.com/lord63/rb_safe
